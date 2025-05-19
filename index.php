@@ -112,7 +112,7 @@
         <input type="password" placeholder="senha" id="senha" required>
         <button type="button" class="toggle-password" onclick="toggleSenha()">👁‍🗨</button>
       </div>
-      <a href="#" onclick="redefinirSenha()">redefinir senha</a>
+      <a href="redefinir_senha.php" onclick="redefinirSenha()">redefinir senha</a>
       <script>
         funcion redefinirSenha(){
           alert("Redirecionar para redefinir senha...");
