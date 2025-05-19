@@ -107,16 +107,16 @@
   <div class="background">
     <div class="login-box">
       <h2>Login</h2>
+      <form onsubmit="fazerLogin(event)">
       <input type="email" placeholder="e-mail" required>
 
       <div class="input-wrapper">
         <input type="password" placeholder="senha" id="senha" required>
         <button type="button" class="toggle-password" onclick="toggleSenha()">👁‍🗨</button>
       </div>
-
       <a href="#">redefinir senha</a>
-
       <button type="submit" class="login-button">➜</button>
+    </form>
     </div>
   </div>
 
