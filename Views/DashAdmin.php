@@ -101,7 +101,7 @@
       <h2>Dashboard Administrador</h2>
 
       <div class="grid-buttons">
-        <button>Cargo</button>
+        <button onclick="window.location.href='AddFuncionario.php'">Cargo</button>
         <button>Restaurantes</button>
         <button>Categoria</button>
         <button>Funcionário</button>

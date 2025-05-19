@@ -173,7 +173,7 @@
           </tr>
         </tbody>
       </table>
-      <button class="btn-add" onclick="alert('Ir para cadastro de funcionário')">Adicionar funcionário</button>
+      <button class="btn-add" onclick="window.location.href='CadastrarFuncionario.php'">Adicionar funcionário</button>
     </div>
 
     <div class="voltar" onclick="window.history.back()">Voltar</div>
