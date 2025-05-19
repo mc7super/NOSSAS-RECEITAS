@@ -112,7 +112,13 @@
         <input type="password" placeholder="senha" id="senha" required>
         <button type="button" class="toggle-password" onclick="toggleSenha()">👁‍🗨</button>
       </div>
-      <a href="#">redefinir senha</a>
+      <a href="#" onclick="redefinirSenha()">redefinir senha</a>
+      <script>
+        funcion redefinirSenha(){
+          alert("Redirecionar para redefinir senha...");
+          window.location.href = 'redefinir_senha.php';
+        }
+      </script>
       <button type="submit" class="login-button">➜</button>
     </div>
   </div>
