@@ -5,11 +5,10 @@ class Usuario {
     public $password;
     public $email;
 
-    public function __construct($id, $username, $password, $email) {
+    public function __construct($id, $email, $senha_hash) {
         $this->id = $id;
-        $this->username = $username;
-        $this->password = $password;
         $this->email = $email;
+        $this->senha_hash = $senha_hash;
     }
 
     // Função para buscar um usuário no banco
@@ -19,7 +18,7 @@ class Usuario {
 
         if ($result->num_rows > 0) {
             $row = $result->fetch_assoc();
-            return new Usuario($row['id'], $row['username'], $row['password'], $row['email']);
+            return new Usuario($row['id'], $row['email'], $row['senha_hash']);
         }
 
         return null;
