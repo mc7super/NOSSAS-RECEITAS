@@ -1,7 +1,7 @@
 <?php
 session_start();
-require 'conexao.php';    // arquivo com sua conexão MySQL
-require 'Usuario.php';    // classe acima
+require 'conectabd.php';    // arquivo com sua conexão MySQL
+require 'usuario.php';    // classe acima
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['username'];
