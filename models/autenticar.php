@@ -26,13 +26,17 @@ if ($usuario && password_verify($senha, $usuario['senha_hash'])) {
     // Redirecionamento conforme cargo
     switch (strtolower($usuario['cargo'])) {
         case 'administrador':
-            header("Location: ../dashboards/admin.php");
+            header("Location: ../Views/DashAdmin.php");
             break;
         case 'cozinheiro':
-            header("Location: ../dashboards/cozinheiro.php");
+            header("Location: ../Views/DashCozinheiro.php");
             break;
-        default:
-            header("Location: ../dashboards/geral.php");
+        case 'degustador':
+            header("Location: ../Views/DashDegustador.php");
+            break;
+        case 'editor':
+            header("Location: ../Views/DashEditor.php");
+            break;
     }
     exit;
 } else {
