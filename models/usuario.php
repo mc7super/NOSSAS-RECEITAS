@@ -2,7 +2,7 @@
 class Usuario {
     public $id;
     public $username;
-    public $password;
+    public $senha_hash;
     public $email;
 
     public function __construct($id, $email, $senha_hash) {
@@ -23,5 +23,13 @@ class Usuario {
 
         return null;
     }
+
+    // Método auxiliar para gerar um hash de senha
+    public static function gerarHash($senha) {
+        return password_hash($senha, PASSWORD_DEFAULT);
+    }
 }
+
+// Exemplo de uso:
+echo Usuario::gerarHash('admin');
 ?>

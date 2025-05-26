@@ -1,13 +1,16 @@
 <?php
-    $host = 'localhost';
-    $dbname = 'nossa_receita';
-    $user = 'root';
-    $password = '';
+$host = 'localhost';
+$dbname = 'nossa_receita';
+$user = 'root';
+$password = '';
+$charset = 'utf8';
 
+$dsn = "mysql:host=$host;dbname=$dbname;charset=$charset";
+$options = [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION];
 
-    $conexao = new mysqli($host,$user, $password,$dbname) or die(mysqli_error($conexao));
-    if ($conn->connect_error) {
-        die("Erro na conexão: " . $conn->connect_error);
-    }
-    echo "Conexão bem-sucedida!";
+try {
+    $pdo = new PDO($dsn, $user, $password, $options);
+} catch (\PDOException $e) {
+    die('Erro ao conectar: ' . $e->getMessage());
+}
 ?>

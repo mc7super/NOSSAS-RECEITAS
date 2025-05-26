@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +12,8 @@
       box-sizing: border-box;
     }
 
-    body, html {
+    body,
+    html {
       height: 100%;
       font-family: Arial, sans-serif;
     }
@@ -26,7 +28,8 @@
     }
 
     .background {
-      height: calc(100% - 80px); /* Altura da tela menos o header */
+      height: calc(100% - 80px);
+      /* Altura da tela menos o header */
       background-image: url('https://images.unsplash.com/photo-1600891964599-f61ba0e24092');
       background-size: cover;
       background-position: center;
@@ -100,6 +103,7 @@
     }
   </style>
 </head>
+
 <body>
 
   <header>Nossas Receitas</header>
@@ -107,13 +111,16 @@
   <div class="background">
     <div class="login-box">
       <h2>Login</h2>
-      <input type="email" placeholder="e-mail" required>
-      <div class="input-wrapper">
-        <input type="password" placeholder="senha" id="senha" required>
-        <button type="button" class="toggle-password" onclick="toggleSenha()">👁‍🗨</button>
-      </div>
-      <a href="Views/redefinicao.php" onclick="redefinirSenha()">redefinir senha</a>
-      <button type="submit" class="login-button">➜</button>
+      <form action="models/autenticar.php" method="POST">
+        <input type="email" name="email" placeholder="e-mail" required>
+        <div class="input-wrapper">
+          <input type="password" name="senha" placeholder="senha" id="senha" required>
+          <button type="button" class="toggle-password" onclick="toggleSenha()">👁‍🗨</button>
+        </div>
+        <a href="Views/redefinicao.php" onclick="redefinirSenha()">redefinir senha</a>
+        <button type="submit" class="login-button">➜</button>
+      </form>
+
     </div>
   </div>
 
@@ -125,4 +132,5 @@
   </script>
 
 </body>
+
 </html>
