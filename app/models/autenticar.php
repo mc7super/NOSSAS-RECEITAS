@@ -2,7 +2,7 @@
 session_start();
 
 // Caminho absoluto para evitar erro de localização do arquivo
-require_once __DIR__ . '/../conectabd.php';
+require_once __DIR__ . '/../database.php';
 
 // Verifica se e-mail e senha foram enviados
 if (!isset($_POST['email'], $_POST['senha'])) {
