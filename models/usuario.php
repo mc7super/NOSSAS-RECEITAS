@@ -1,35 +1,25 @@
 <?php
 class Usuario {
     public $id;
-    public $username;
-    public $senha_hash;
     public $email;
+    public $senha_hash;
+    public $ativo;
 
-    public function __construct($id, $email, $senha_hash) {
-        $this->id = $id;
-        $this->email = $email;
-        $this->senha_hash = $senha_hash;
-    }
+    public static function findByEmail($email, $pdo) {
+        $stmt = $pdo->prepare("SELECT * FROM usuario WHERE email = :email AND ativo = 1 LIMIT 1");
+        $stmt->execute(['email' => $email]);
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    // Função para buscar um usuário no banco
-    public static function findByUsername($username, $conn) {
-        $sql = "SELECT * FROM usuarios WHERE username = '$username'";
-        $result = $conn->query($sql);
-
-        if ($result->num_rows > 0) {
-            $row = $result->fetch_assoc();
-            return new Usuario($row['id'], $row['email'], $row['senha_hash']);
+        if ($row) {
+            $usuario = new Usuario();
+            $usuario->id = $row['id_Usuario'];
+            $usuario->email = $row['email'];
+            $usuario->senha_hash = $row['senha_hash'];
+            $usuario->ativo = $row['ativo'];
+            return $usuario;
         }
 
         return null;
     }
-
-    // Método auxiliar para gerar um hash de senha
-    public static function gerarHash($senha) {
-        return password_hash($senha, PASSWORD_DEFAULT);
-    }
 }
-
-// Exemplo de uso:
-echo Usuario::gerarHash('admin');
 ?>

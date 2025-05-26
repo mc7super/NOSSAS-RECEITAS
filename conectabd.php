@@ -10,7 +10,7 @@ $options = [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION];
 
 try {
     $pdo = new PDO($dsn, $user, $password, $options);
-} catch (\PDOException $e) {
-    die('Erro ao conectar: ' . $e->getMessage());
+} catch (PDOException $e) {
+    die("Erro na conexão: " . $e->getMessage());
 }
 ?>

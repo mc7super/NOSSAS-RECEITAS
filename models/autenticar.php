@@ -1,15 +1,18 @@
 <?php
 session_start();
-require_once '../conectabd.php';
 
+// Caminho absoluto para evitar erro de localização do arquivo
+require_once __DIR__ . '/../conectabd.php';
+
+// Verifica se e-mail e senha foram enviados
 if (!isset($_POST['email'], $_POST['senha'])) {
     die('Por favor, preencha e-mail e senha.');
 }
 
-$email = $_POST['email'];
+$email = filter_var(trim($_POST['email']), FILTER_SANITIZE_EMAIL);
 $senha = $_POST['senha'];
 
-// Buscar usuário e cargo
+// Consulta para buscar o usuário, nome do funcionário e o cargo
 $sql = "SELECT u.id_Usuario, u.senha_hash, f.nome, c.descricao AS cargo
         FROM Usuario u
         JOIN funcionarios f ON u.funcionario_id = f.id_funcionario
@@ -20,10 +23,12 @@ $stmt = $pdo->prepare($sql);
 $stmt->execute(['email' => $email]);
 $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 
+// Verifica se o usuário foi encontrado e se a senha confere
 if ($usuario && password_verify($senha, $usuario['senha_hash'])) {
+    session_regenerate_id(true);
     $_SESSION['usuario'] = $usuario;
 
-    // Redirecionamento conforme cargo
+    // Redirecionamento com base no cargo
     switch (strtolower($usuario['cargo'])) {
         case 'administrador':
             header("Location: ../Views/DashAdmin.php");
@@ -37,8 +42,20 @@ if ($usuario && password_verify($senha, $usuario['senha_hash'])) {
         case 'editor':
             header("Location: ../Views/DashEditor.php");
             break;
+        default:
+            // Cargo desconhecido → volta para login com mensagem de erro
+            header('Location: ../index.php?erro=credenciais_invalidas');
+            exit;
+
     }
+
+    exit;
+} if (!isset($_POST['email'], $_POST['senha'])) {
+    header("Location: ../index.php?erro=campos_vazios");
     exit;
 } else {
-    echo "E-mail ou senha inválidos!";
+    // Login inválido → volta para login com erro
+    header("Location: ../index.php?erro=credenciais_invalidas");
+    exit;
 }
+?>
