@@ -1,4 +1,3 @@
-<!-- database.php -->
 <?php
 $host = 'localhost';
 $dbname = 'nossa_receita';
