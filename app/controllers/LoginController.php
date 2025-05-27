@@ -1,3 +1,4 @@
+<!-- LoginController.php -->
 <?php
 require_once '../models/Receita.php';
 

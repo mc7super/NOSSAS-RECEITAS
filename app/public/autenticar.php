@@ -1,3 +1,4 @@
+<!-- autenciar.php -->
 <?php
 session_start();
 
@@ -29,25 +30,23 @@ if ($usuario && password_verify($senha, $usuario['senha_hash'])) {
     session_regenerate_id(true);
     $_SESSION['usuario'] = $usuario;
 
-    // Redirecionamento com base no cargo
-    switch (strtolower($usuario['cargo'])) {
-        case 'administrador':
-            header("Location: ../Views/DashAdmin.php");
-            break;
-        case 'cozinheiro':
-            header("Location: ../Views/DashCozinheiro.php");
-            break;
-        case 'degustador':
-            header("Location: ../Views/DashDegustador.php");
-            break;
-        case 'editor':
-            header("Location: ../Views/DashEditor.php");
-            break;
-        default:
-            header('Location: ../public/index.php?erro=cargo_invalido');
-            exit;
+    // ✅ Redirecionamento com base no cargo usando array
+    $redirects = [
+        'administrador' => '../Views/DashAdmin.php',
+        'cozinheiro'    => '../Views/DashCozinheiro.php',
+        'degustador'    => '../Views/DashDegustador.php',
+        'editor'        => '../Views/DashEditor.php',
+    ];
+
+    $cargo = strtolower($usuario['cargo']);
+
+    if (isset($redirects[$cargo])) {
+        header("Location: " . $redirects[$cargo]);
+        exit;
+    } else {
+        header('Location: ../public/index.php?erro=cargo_invalido');
+        exit;
     }
-    exit;
 } else {
     // Login inválido → volta para login com erro
     header("Location: ../public/index.php?erro=credenciais_invalidas");

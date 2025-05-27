@@ -1,3 +1,4 @@
+<!-- index.php -->
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -111,6 +112,32 @@
   <div class="background">
     <div class="login-box">
       <h2>Login</h2>
+      <?php if (isset($_GET['erro'])): ?>
+        <div style="color: red; font-size: 0.9rem; text-align: center;">
+          <?php
+          switch ($_GET['erro']) {
+            case 'credenciais_invalidas':
+              echo "E-mail ou senha inválidos.";
+              break;
+            case 'campos_vazios':
+              echo "Preencha todos os campos.";
+              break;
+            case 'cargo_invalido':
+              echo "Seu cargo não tem acesso.";
+              break;
+            case 'nao_autenticado':
+              echo "Faça login para continuar.";
+              break;
+            case 'sem_permissao':
+              echo "Você não tem permissão para acessar essa página.";
+              break;
+            default:
+              echo "Erro desconhecido.";
+          }
+          ?>
+        </div>
+      <?php endif; ?>
+
       <form action="autenticar.php" method="POST">
         <input type="email" name="email" placeholder="e-mail" required>
         <div class="input-wrapper">

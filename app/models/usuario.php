@@ -1,25 +1,35 @@
+<!-- usuario.php -->
 <?php
+
 class Usuario {
     public $id;
     public $email;
     public $senha_hash;
-    public $ativo;
+    public $id_funcionario; 
+    public $cargo;
 
     public static function findByEmail($email, $pdo) {
-        $stmt = $pdo->prepare("SELECT * FROM usuario WHERE email = :email AND ativo = 1 LIMIT 1");
+        $sql = "SELECT u.id, u.email, u.senha_hash, f.id AS id_funcionario, c.nome AS cargo
+                FROM usuario u
+                JOIN funcionario f ON f.id = u.id_funcionario
+                JOIN cargo c ON c.id = f.id_cargo
+                WHERE u.email = :email
+                LIMIT 1";
+        
+        $stmt = $pdo->prepare($sql);
         $stmt->execute(['email' => $email]);
-        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        $dados = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if ($row) {
+        if ($dados) {
             $usuario = new Usuario();
-            $usuario->id = $row['id_Usuario'];
-            $usuario->email = $row['email'];
-            $usuario->senha_hash = $row['senha_hash'];
-            $usuario->ativo = $row['ativo'];
+            $usuario->id = $dados['id'];
+            $usuario->email = $dados['email'];
+            $usuario->senha_hash = $dados['senha_hash'];
+            $usuario->id_funcionario = $dados['id_funcionario'];
+            $usuario->cargo = $dados['cargo'];
             return $usuario;
         }
 
         return null;
     }
 }
-?>

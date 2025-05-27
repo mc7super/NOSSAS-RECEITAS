@@ -1,3 +1,4 @@
+<!-- receita.php -->
 <?php
 class Receita {
     public $id;

@@ -1,3 +1,4 @@
+<!-- receita.php -->
 <?php
 require_once '../controllers/ReceitaController.php';
 

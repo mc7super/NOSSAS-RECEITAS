@@ -12,18 +12,31 @@ if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'POST') 
     if ($usuario && password_verify($password, $usuario->senha_hash)) {
         $_SESSION['usuario_id'] = $usuario->id;
         $_SESSION['usuario_email'] = $usuario->email;
-        header('Location: DashAdmin.php');
+        $_SESSION["id_funcionario"] = $usuario->id_funcionario;
+        $_SESSION["cargo"] = $usuario->cargo;                   
+
+        // Redirecionamento por cargo
+        switch ($_SESSION["cargo"]) {
+            case 'Administrador':
+                header("Location: admin/dashboard_admin.php");
+                break;
+            case 'Cozinheiro':
+                header("Location: cozinheiro/dashboard_cozinheiro.php");
+                break;
+            case 'Degustador':
+                header("Location: degustador/dashboard_degustador.php");
+                break;
+            case 'Editor':
+                header("Location: editor/dashboard_editor.php");
+                break;
+            default:
+                echo "Cargo desconhecido.";
+                exit();
+        }
+
         exit();
     } else {
         echo "Usuário ou senha incorretos.";
     }
 }
-
 ?>
-
-<!-- Formulário HTML -->
-<form method="POST" action="login.php">
-    <input type="text" name="email" placeholder="E-mail" required>
-    <input type="password" name="password" placeholder="Senha" required>
-    <button type="submit">Entrar</button>
-</form>
