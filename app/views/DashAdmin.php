@@ -1,10 +1,12 @@
 <?php
-session_start();
-if (!isset($_SESSION['usuario_id'])) {
-    header('Location: ../public/index.php?erro=nao_autenticado');
-    exit();
-}
+require_once __DIR__ . '/../config/auth.php';
+
+// Exemplo para admin
+checarCargo(['administrador']);
+
+// Aqui o resto da página do admin...
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>

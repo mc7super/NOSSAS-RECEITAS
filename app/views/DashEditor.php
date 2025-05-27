@@ -1,3 +1,11 @@
+<?php
+require_once __DIR__ . '/../config/auth.php';
+
+// Exemplo para admin
+checarCargo(['administrador']);
+
+// Aqui o resto da página do admin...
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
