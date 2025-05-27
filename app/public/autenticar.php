@@ -6,7 +6,7 @@ require_once __DIR__ . '/../config/database.php';
 
 // Verifica se e-mail e senha foram enviados
 if (!isset($_POST['email'], $_POST['senha']) || empty($_POST['email']) || empty($_POST['senha'])) {
-    header("Location: ../index.php?erro=campos_vazios");
+    header("Location: ../public/index.php?erro=campos_vazios");
     exit;
 }
 
@@ -44,13 +44,13 @@ if ($usuario && password_verify($senha, $usuario['senha_hash'])) {
             header("Location: ../Views/DashEditor.php");
             break;
         default:
-            header('Location: ../index.php?erro=cargo_invalido');
+            header('Location: ../public/index.php?erro=cargo_invalido');
             exit;
     }
     exit;
 } else {
     // Login inválido → volta para login com erro
-    header("Location: ../index.php?erro=credenciais_invalidas");
+    header("Location: ../public/index.php?erro=credenciais_invalidas");
     exit;
 }
 ?>

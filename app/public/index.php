@@ -1,3 +1,29 @@
+<?php
+session_start();
+
+if (isset($_SESSION['usuario']['cargo'])) {
+    $cargo = strtolower($_SESSION['usuario']['cargo']);
+    switch ($cargo) {
+        case 'administrador':
+            header('Location: ../Views/DashAdmin.php');
+            exit;
+        case 'cozinheiro':
+            header('Location: ../Views/DashCozinheiro.php');
+            exit;
+        case 'degustador':
+            header('Location: ../Views/DashDegustador.php');
+            exit;
+        case 'editor':
+            header('Location: ../Views/DashEditor.php');
+            exit;
+        default:
+            session_destroy();
+            header('Location: index.php?erro=cargo_invalido');
+            exit;
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -102,31 +128,6 @@
     }
   </style>
 </head>
-<?php
-session_start();
-
-if (isset($_SESSION['usuario']['cargo'])) {
-    $cargo = strtolower($_SESSION['usuario']['cargo']);
-    switch ($cargo) {
-        case 'administrador':
-            header('Location: ../Views/DashAdmin.php');
-            exit;
-        case 'cozinheiro':
-            header('Location: ../Views/DashCozinheiro.php');
-            exit;
-        case 'degustador':
-            header('Location: ../Views/DashDegustador.php');
-            exit;
-        case 'editor':
-            header('Location: ../Views/DashEditor.php');
-            exit;
-        default:
-            session_destroy();
-            header('Location: index.php?erro=cargo_invalido');
-            exit;
-    }
-}
-?>
 
 <body>
 
@@ -155,7 +156,7 @@ if (isset($_SESSION['usuario']['cargo'])) {
   <p style="color: red; text-align: center;"><?php echo $mensagem; ?></p>
 <?php endif; ?>
 
-      <form action="/../autenticar.php" method="POST">
+      <form action="autenticar.php" method="POST">
         <input type="email" name="email" placeholder="e-mail" required>
         <div class="input-wrapper">
           <input type="password" name="senha" placeholder="senha" id="senha" required>

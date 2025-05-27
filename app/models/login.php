@@ -1,9 +1,9 @@
 <?php
 session_start();
-require 'conectabd.php';
+require '../config/database.php';
 require 'usuario.php';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'] ?? '';
     $password = $_POST['senha'] ?? '';
 
@@ -18,6 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo "Usuário ou senha incorretos.";
     }
 }
+
 ?>
 
 <!-- Formulário HTML -->
