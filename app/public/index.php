@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<!-- -->
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -103,6 +102,31 @@
     }
   </style>
 </head>
+<?php
+session_start();
+
+if (isset($_SESSION['usuario']['cargo'])) {
+    $cargo = strtolower($_SESSION['usuario']['cargo']);
+    switch ($cargo) {
+        case 'administrador':
+            header('Location: ../Views/DashAdmin.php');
+            exit;
+        case 'cozinheiro':
+            header('Location: ../Views/DashCozinheiro.php');
+            exit;
+        case 'degustador':
+            header('Location: ../Views/DashDegustador.php');
+            exit;
+        case 'editor':
+            header('Location: ../Views/DashEditor.php');
+            exit;
+        default:
+            session_destroy();
+            header('Location: index.php?erro=cargo_invalido');
+            exit;
+    }
+}
+?>
 
 <body>
 
@@ -131,13 +155,13 @@
   <p style="color: red; text-align: center;"><?php echo $mensagem; ?></p>
 <?php endif; ?>
 
-      <form action="models/autenticar.php" method="POST">
+      <form action="/../autenticar.php" method="POST">
         <input type="email" name="email" placeholder="e-mail" required>
         <div class="input-wrapper">
           <input type="password" name="senha" placeholder="senha" id="senha" required>
           <button type="button" class="toggle-password" onclick="toggleSenha()" aria-label="Mostrar ou esconder senha">👁‍🗨</button>
         </div>
-        <a href="Views/redefinicao.php">redefinir senha</a>
+        <a href="../Views/redefinicao.php">redefinir senha</a>
         <button type="submit" class="login-button">➜</button>
       </form>
 

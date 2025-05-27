@@ -1,12 +1,13 @@
-<?php
+<?php 
 session_start();
 
-// Caminho absoluto para evitar erro de localização do arquivo
-require_once __DIR__ . '/../database.php';
+// Inclui a conexão PDO com o banco
+require_once __DIR__ . '/../config/database.php';
 
 // Verifica se e-mail e senha foram enviados
-if (!isset($_POST['email'], $_POST['senha'])) {
-    die('Por favor, preencha e-mail e senha.');
+if (!isset($_POST['email'], $_POST['senha']) || empty($_POST['email']) || empty($_POST['senha'])) {
+    header("Location: ../index.php?erro=campos_vazios");
+    exit;
 }
 
 $email = filter_var(trim($_POST['email']), FILTER_SANITIZE_EMAIL);
@@ -43,15 +44,9 @@ if ($usuario && password_verify($senha, $usuario['senha_hash'])) {
             header("Location: ../Views/DashEditor.php");
             break;
         default:
-            // Cargo desconhecido → volta para login com mensagem de erro
-            header('Location: ../index.php?erro=credenciais_invalidas');
+            header('Location: ../index.php?erro=cargo_invalido');
             exit;
-
     }
-
-    exit;
-} if (!isset($_POST['email'], $_POST['senha'])) {
-    header("Location: ../index.php?erro=campos_vazios");
     exit;
 } else {
     // Login inválido → volta para login com erro
