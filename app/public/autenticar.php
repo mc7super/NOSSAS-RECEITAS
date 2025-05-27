@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 
 // Inclui a conexão PDO com o banco

@@ -1,31 +1,6 @@
-<?php
-session_start();
-
-if (isset($_SESSION['usuario']['cargo'])) {
-    $cargo = strtolower($_SESSION['usuario']['cargo']);
-    switch ($cargo) {
-        case 'administrador':
-            header('Location: ../Views/DashAdmin.php');
-            exit;
-        case 'cozinheiro':
-            header('Location: ../Views/DashCozinheiro.php');
-            exit;
-        case 'degustador':
-            header('Location: ../Views/DashDegustador.php');
-            exit;
-        case 'editor':
-            header('Location: ../Views/DashEditor.php');
-            exit;
-        default:
-            session_destroy();
-            header('Location: index.php?erro=cargo_invalido');
-            exit;
-    }
-}
-?>
-
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -136,37 +111,18 @@ if (isset($_SESSION['usuario']['cargo'])) {
   <div class="background">
     <div class="login-box">
       <h2>Login</h2>
-      <?php if (isset($_GET['erro'])): ?>
-  <?php
-    $mensagem = '';
-    switch ($_GET['erro']) {
-      case 'cargo_invalido':
-        $mensagem = 'Cargo inválido. Entre em contato com o administrador.';
-        break;
-      case 'credenciais_invalidas':
-        $mensagem = 'E-mail ou senha inválidos.';
-        break;
-      case 'campos_vazios':
-        $mensagem = 'Preencha todos os campos.';
-        break;
-      default:
-        $mensagem = 'Erro desconhecido. Tente novamente.';
-    }
-  ?>
-  <p style="color: red; text-align: center;"><?php echo $mensagem; ?></p>
-<?php endif; ?>
-
       <form action="autenticar.php" method="POST">
         <input type="email" name="email" placeholder="e-mail" required>
         <div class="input-wrapper">
           <input type="password" name="senha" placeholder="senha" id="senha" required>
-          <button type="button" class="toggle-password" onclick="toggleSenha()" aria-label="Mostrar ou esconder senha">👁‍🗨</button>
+          <button type="button" class="toggle-password" onclick="toggleSenha()"
+            aria-label="Mostrar ou esconder senha">👁‍🗨</button>
         </div>
         <a href="../Views/redefinicao.php">redefinir senha</a>
         <button type="submit" class="login-button">➜</button>
       </form>
-
     </div>
+
   </div>
 
   <script>

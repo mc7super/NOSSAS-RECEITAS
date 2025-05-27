@@ -10,9 +10,11 @@ if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] == 'GET') {
 }
 
 // adicionar uma receita
-if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] == 'POST' &&
-    isset($_POST['nome']) && isset($_POST['categoria']) && isset($_POST['descricao'])) {
-    
+if (
+    isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] == 'POST' &&
+    isset($_POST['nome']) && isset($_POST['categoria']) && isset($_POST['descricao'])
+) {
+
     $nome = $_POST['nome'];
     $categoria = $_POST['categoria'];
     $descricao = $_POST['descricao'];
