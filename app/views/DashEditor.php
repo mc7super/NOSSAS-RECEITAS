@@ -1,12 +1,13 @@
 <!-- DashEditor.php -->
 <?php
-require_once __DIR__ . '/../config/auth.php';
+session_start();
 
-// Exemplo para admin
-checarCargo(['administrador']);
-
-// Aqui o resto da página do admin...
+if (!isset($_SESSION['usuario']) || strtolower($_SESSION['usuario']['cargo']) !== 'editor') {
+    echo "Você não tem permissão para acessar essa página.";
+    exit;
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
