@@ -178,7 +178,7 @@
     </section>
   </main>
 
-  <footer class="p-6 text-right text-lg font-normal text-black max-w-4xl mx-auto">
+  <footer class="p-6 text-right text-lg font-normal text-black max-w-4xl mx-auto" onclick="window.history.back()">
     Voltar
   </footer>
 </body>

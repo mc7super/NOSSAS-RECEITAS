@@ -112,13 +112,13 @@ checarCargo(['administrador']);
 
       <div class="grid-buttons">
         <button onclick="window.location.href='AddFuncionario.php'">Cargo</button>
-        <button>Restaurantes</button>
+        <button onclick="window.location.href='consultarRestaurante.php'">Restaurantes</button>
         <button>Categoria</button>
         <button>Funcionário</button>
-        <button>Relatório de Produção Mensal</button>
-        <button>Referência</button>
-        <button>Gerar e-mail de produção Mensal</button>
-        <button>Parâmetros do Sistema</button>
+        <button onclick="window.location.href='RealatorioMensal.php'">Relatório de Produção Mensal</button>
+        <button onclick="window.location.href='consultarRestaurante.php'">Referência</button>
+        <button onclick="window.location.href='GerarEmail.php'">Gerar e-mail de produção Mensal</button>
+        <button onclick="window.location.href='Parametros.php'">Parâmetros do Sistema</button>
       </div>
 
       <div class="voltar" onclick="window.history.back()">Voltar</div>

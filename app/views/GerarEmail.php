@@ -144,6 +144,6 @@
     </section>
   </main>
 
-  <footer class="p-4 text-right text-lg font-normal">Voltar</footer>
+  <footer class="p-4 text-right text-lg font-normal" onclick="window.history.back()">Voltar</footer>
 </body>
 </html>
