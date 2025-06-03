@@ -108,44 +108,42 @@
 </head>
 <body>
 
-  <header>Nossas Receitas</header>
+<?php require_once '../models/dados_funcionario.php'; ?>
+<header>Nossas Receitas</header>
 
-  <div class="container">
-    <div class="form-box">
-      <div class="row">
-        <div class="half">
-          <label for="funcionario">Funcionário</label>
-          <input type="text" id="funcionario" name="funcionario">
-        </div>
-        <div class="half">
-          <label for="data">Data ingresso</label>
-          <input type="date" id="data" name="data" value="2025-08-17">
-        </div>
+<div class="container">
+  <div class="form-box">
+    <div class="row">
+      <div class="half">
+        <label for="funcionario">Funcionário</label>
+        <input type="text" id="funcionario" name="funcionario" value="<?= htmlspecialchars($funcionario['nome']) ?>">
       </div>
-
-      <div class="row">
-        <div class="half">
-          <label for="cargo">Cargo</label>
-          <input type="text" id="cargo" name="cargo">
-        </div>
-        <div class="half">
-          <label for="salario">Salário</label>
-          <input type="text" id="salario" name="salario" placeholder="R$">
-        </div>
+      <div class="half">
+        <label for="data">Data ingresso</label>
+        <input type="date" id="data" name="data" value="<?= $funcionario['data_ingresso'] ?>">
       </div>
-
-      <div class="form-group">
-        <label for="fantasia">Nome fantasia</label>
-        <input type="text" id="fantasia" name="fantasia">
-      </div>
-
-      <button class="btn-salvar" onclick="alert('Funcionário salvo!')">
-        <span class="material-icons">save</span> Salvar
-      </button>
     </div>
 
-    <div class="voltar" onclick="window.history.back()">Voltar</div>
+    <div class="row">
+      <div class="half">
+        <label for="cargo">Cargo</label>
+        <input type="text" id="cargo" name="cargo" value="<?= htmlspecialchars($funcionario['cargo_nome']) ?>">
+      </div>
+      <div class="half">
+        <label for="salario">Salário</label>
+        <input type="text" id="salario" name="salario" value="R$<?= number_format($funcionario['salario'], 2, ',', '.') ?>">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="fantasia">Nome fantasia</label>
+      <input type="text" id="fantasia" name="fantasia" value="<?= htmlspecialchars($funcionario['nome_fantasia']) ?>">
+    </div>
+
+    <button class="btn-salvar" onclick="alert('Funcionário salvo!')">
+      <span class="material-icons">save</span> Salvar
+    </button>
   </div>
 
-</body>
-</html>
+  <div class="voltar" onclick="window.history.back()">Voltar</div>
+</div>

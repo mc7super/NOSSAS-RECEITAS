@@ -114,7 +114,7 @@ checarCargo(['administrador']);
         <button onclick="window.location.href='AddFuncionario.php'">Cargo</button>
         <button onclick="window.location.href='consultarRestaurante.php'">Restaurantes</button>
         <button>Categoria</button>
-        <button>Funcionário</button>
+        <button onclick="window.location.href='AddFuncionario.php'">Funcionário</button>
         <button onclick="window.location.href='RealatorioMensal.php'">Relatório de Produção Mensal</button>
         <button onclick="window.location.href='consultarRestaurante.php'">Referência</button>
         <button onclick="window.location.href='GerarEmail.php'">Gerar e-mail de produção Mensal</button>
