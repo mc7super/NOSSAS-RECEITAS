@@ -288,12 +288,9 @@
     <button class="text-black text-lg font-normal select-none">
      Próximo
     </button>
+    
    </div>
   </main>
-  <footer class="mt-10 mx-6">
-   <button class="text-black text-lg font-normal select-none">
-    Voltar
-   </button>
-  </footer>
+  <div class="voltar" onclick="window.history.back()">Voltar</div>
  </body>
 </html>
