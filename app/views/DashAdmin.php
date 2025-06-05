@@ -29,7 +29,7 @@ checarCargo(['administrador']);
 
     header {
       background-color: #FFD700;
-      color: #B22222;
+      color:#a73838;
       padding: 20px;
       text-align: center;
       font-size: 2rem;
@@ -113,7 +113,7 @@ checarCargo(['administrador']);
       <div class="grid-buttons">
         <button onclick="window.location.href='ConsultarFuncionario.php'">Cargo</button>
         <button onclick="window.location.href='consultarRestaurante.php'">Restaurantes</button>
-        <button>Categoria</button>
+        <button onclick="window.location.href='IncluirCategoria.php'">Categoria</button>
         <button onclick="window.location.href='ConsultarFuncionario.php'">Funcionário</button>
         <button onclick="window.location.href='RealatorioMensal.php'">Relatório de Produção Mensal</button>
         <button onclick="window.location.href='consultarRestaurante.php'">Referência</button>
