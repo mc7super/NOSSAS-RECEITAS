@@ -1,19 +1,18 @@
 <!-- authController.php -->
 <?php
-require_once '../models/Usuario.php';
+namespace App\Controller;
 
-class AuthController
-{
+require_once __DIR__ . '/../models/Usuario.php';
 
-    public function login($username, $password, $conn)
-    {
-        $usuario = Usuario::findByEmail($username, $conn);
+use App\Model\Usuario;
 
-        if ($usuario && password_verify($password, $usuario->senha_hash)) {
-            return "Login bem-sucedido!";
+class AuthController {
+    public function login($email, $senha) {
+        $usuario = Usuario::findByEmail($email);
+        if ($usuario && password_verify($senha, $usuario->senha_hash)) {
+            // sucesso
+        } else {
+            // falha
         }
-
-        return "Usuário ou senha incorretos.";
     }
 }
-?>
