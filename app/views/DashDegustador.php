@@ -104,8 +104,8 @@ if (!isset($_SESSION['usuario']) || strtolower($_SESSION['usuario']['cargo']) !=
       <h2>Dashboard Degustador</h2>
 
       <div class="dashboard-buttons">
-        <button>Avaliar Prato</button>
-        <button>Editar Avaliações</button>
+        <button onclick="window.location.href='.php'">Avaliar Prato</button>
+        <button onclick="window.location.href='.php'">Editar Avaliações</button>
       </div>
 
       <div class="voltar" onclick="window.history.back()">Voltar</div>
