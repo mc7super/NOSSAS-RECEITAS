@@ -108,16 +108,10 @@
       <h2>Incluir Ingredientes</h2>
 
       <label for="nome">Nome</label>
-      <input type="text" id="nome" name="nome" placeholder="Nome da receita">
+      <input type="text" id="nome" name="nome" placeholder="Nome do ingrediente">
 
-      <label for="ingredientes">Ingredientes</label>
-      <input type="text" id="ingredientes" name="ingredientes" placeholder="Lista de ingredientes">
-
-      <label for="modo">Modo de Preparo</label>
-      <input type="text" id="modo" name="modo" placeholder="Descreva o modo de preparo">
-
-      <label for="tempo">Tempo de Preparo</label>
-      <input type="text" id="tempo" name="tempo" placeholder="Ex: 30 minutos">
+      <label for="ingredientes">Descrição</label>
+      <input type="text" id="ingredientes" name="ingredientes" placeholder="Descrição do ingrediente">
 
       <button class="btn-salvar" onclick="alert('Ingredientes salvos!')">
         <span class="material-icons">save</span> Salvar

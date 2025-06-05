@@ -116,63 +116,6 @@
             <th>Editar</th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            <td>João Pedro</td>
-            <td>12/04/2025</td>
-            <td>R$ 1200</td>
-            <td>Cozinheiro</td>
-            <td>João</td>
-            <td>
-              <span class="material-icons icon" title="Editar">edit</span>
-              <span class="material-icons icon" title="Excluir">delete</span>
-            </td>
-          </tr>
-          <tr>
-            <td>Joana Lima</td>
-            <td>11/04/2025</td>
-            <td>R$ 1300</td>
-            <td>Degustador</td>
-            <td>Joana</td>
-            <td>
-              <span class="material-icons icon" title="Editar">edit</span>
-              <span class="material-icons icon" title="Excluir">delete</span>
-            </td>
-          </tr>
-          <tr>
-            <td>Carlos Santos</td>
-            <td>10/04/2025</td>
-            <td>R$ 2000</td>
-            <td>Administrador</td>
-            <td>Carlos</td>
-            <td>
-              <span class="material-icons icon" title="Editar">edit</span>
-              <span class="material-icons icon" title="Excluir">delete</span>
-            </td>
-          </tr>
-          <tr>
-            <td>Rafaela Rocha</td>
-            <td>22/04/2025</td>
-            <td>R$ 1500</td>
-            <td>Editor</td>
-            <td>Rafaela</td>
-            <td>
-              <span class="material-icons icon" title="Editar">edit</span>
-              <span class="material-icons icon" title="Excluir">delete</span>
-            </td>
-          </tr>
-          <tr>
-            <td>Ana Lúcia</td>
-            <td>21/04/2025</td>
-            <td>R$ 1300</td>
-            <td>Degustador</td>
-            <td>Ana</td>
-            <td>
-              <span class="material-icons icon" title="Editar">edit</span>
-              <span class="material-icons icon" title="Excluir">delete</span>
-            </td>
-          </tr>
-        </tbody>
       </table>
       <button class="btn-add" onclick="window.location.href='CadastrarFuncionario.php'">Adicionar funcionário</button>
     </div>

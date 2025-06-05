@@ -22,3 +22,4 @@ if (!$funcionario) {
     echo "Funcionário não encontrado.";
     exit;
 }
+?>
