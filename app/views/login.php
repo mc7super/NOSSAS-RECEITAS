@@ -1,4 +1,4 @@
-<!-- index.php -->
+<!-- login.php -->
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -138,7 +138,7 @@
         </div>
       <?php endif; ?>
 
-      <form action="/public/autenticar.php" method="POST">
+      <form action="../public/autenticar.php" method="POST">
         <input type="email" name="email" placeholder="e-mail" required>
         <div class="input-wrapper">
           <input type="password" name="senha" placeholder="senha" id="senha" required>

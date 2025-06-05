@@ -111,10 +111,10 @@ checarCargo(['administrador']);
       <h2>Dashboard Administrador</h2>
 
       <div class="grid-buttons">
-        <button onclick="window.location.href='AddFuncionario.php'">Cargo</button>
+        <button onclick="window.location.href='ConsultarFuncionario.php'">Cargo</button>
         <button onclick="window.location.href='consultarRestaurante.php'">Restaurantes</button>
         <button>Categoria</button>
-        <button onclick="window.location.href='AddFuncionario.php'">Funcionário</button>
+        <button onclick="window.location.href='ConsultarFuncionario.php'">Funcionário</button>
         <button onclick="window.location.href='RealatorioMensal.php'">Relatório de Produção Mensal</button>
         <button onclick="window.location.href='consultarRestaurante.php'">Referência</button>
         <button onclick="window.location.href='GerarEmail.php'">Gerar e-mail de produção Mensal</button>

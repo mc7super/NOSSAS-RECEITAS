@@ -1,4 +1,9 @@
-<!-- AddFuncionario.php -->
+<!-- ConsultarFuncionario.php --> 
+<?php
+require_once __DIR__ . '/../models/dados_funcionario.php';
+$funcionarios = DadosFuncionario::listarTodos();
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -95,7 +100,6 @@
     }
   </style>
 
-  
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
@@ -116,12 +120,24 @@
             <th>Editar</th>
           </tr>
         </thead>
+        <tbody>
+          <?php foreach ($funcionarios as $f): ?>
+            <tr>
+              <td><?= htmlspecialchars($f['nome']) ?></td>
+              <td><?= htmlspecialchars($f['data_ingresso']) ?></td>
+              <td>R$ <?= number_format($f['salario'], 2, ',', '.') ?></td>
+              <td><?= htmlspecialchars($f['cargo_nome']) ?></td>
+              <td><?= htmlspecialchars($f['nome_fantasia']) ?></td>
+              <td><span class="material-icons icon">edit</span></td>
+            </tr>
+          <?php endforeach; ?>
+        </tbody>
       </table>
-      <button class="btn-add" onclick="window.location.href='CadastrarFuncionario.php'">Adicionar funcionário</button>
+      <button class="btn-add" onclick="window.location.href='IncluirFuncionario.php'">Adicionar funcionário</button>
     </div>
 
     <div class="voltar" onclick="window.history.back()">Voltar</div>
   </div>
 
 </body>
-</html> 
+</html>

@@ -1,20 +1,20 @@
 <?php
 session_start();
 
-// Inclui a conexão com PDO e a classe Usuario
 require_once __DIR__ . '/../config/database.php';
 require_once __DIR__ . '/../models/usuario.php';
 
 // Verifica se e-mail e senha foram enviados
 if (!isset($_POST['email'], $_POST['senha']) || empty($_POST['email']) || empty($_POST['senha'])) {
-    header("Location: ../public/index.php?erro=campos_vazios");
+    header("Location: ../views/login.php?erro=campos_vazios");
     exit;
 }
 
 $email = filter_var(trim($_POST['email']), FILTER_SANITIZE_EMAIL);
 $senha = $_POST['senha'];
 
-// Usa a classe Usuario para buscar no banco
+$pdo = Database::conectar();
+
 $usuario = Usuario::findByEmail($email, $pdo);
 
 if ($usuario && password_verify($senha, $usuario->senha_hash)) {
@@ -22,11 +22,10 @@ if ($usuario && password_verify($senha, $usuario->senha_hash)) {
     $_SESSION['usuario'] = [
         'id' => $usuario->id,
         'email' => $usuario->email,
-        'nome' => $usuario->id_funcionario, // ou um atributo nome se for carregado
+        'nome' => $usuario->id_funcionario, // se tiver nome, pode ajustar aqui
         'cargo' => $usuario->cargo,
     ];
 
-    // Redirecionamento com base no cargo
     $redirects = [
         'administrador' => '../Views/DashAdmin.php',
         'cozinheiro' => '../Views/DashCozinheiro.php',
@@ -40,10 +39,10 @@ if ($usuario && password_verify($senha, $usuario->senha_hash)) {
         header("Location: " . $redirects[$cargo]);
         exit;
     } else {
-        header('Location: ../public/index.php?erro=cargo_invalido');
+        header('Location: ../views/login.php?erro=cargo_invalido');
         exit;
     }
 } else {
-    header("Location: ../public/index.php?erro=credenciais_invalidas");
+    header("Location: ../views/login.php?erro=credenciais_invalidas");
     exit;
 }
