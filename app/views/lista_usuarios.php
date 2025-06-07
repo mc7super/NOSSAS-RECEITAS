@@ -1,5 +1,8 @@
 <?php
 require_once(__DIR__ . '/../controller/UsuarioController.php');
+
+use App\Controller\UsuarioController;
+
 $usuarios = (new UsuarioController)->listar();
 ?>
 

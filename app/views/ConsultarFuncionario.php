@@ -9,7 +9,7 @@ $funcionarios = DadosFuncionario::listarTodos();
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Consulta de  Funcionário</title>
+  <title>Consulta de Funcionário</title>
   <style>
     body {
       margin: 0;
@@ -104,40 +104,54 @@ $funcionarios = DadosFuncionario::listarTodos();
 </head>
 <body>
 
-  <header>Nossas Receitas</header>
+<header>Nossas Receitas</header>
 
-  <div class="container">
-    <div class="box">
-      <h2>Consultar Funcionário</h2>
-      <table>
-        <thead>
+<div class="container">
+  <div class="box">
+    <h2>Consultar Funcionário</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Data ingresso</th>
+          <th>Salário</th>
+          <th>Cargo</th>
+          <th>Nome fantasia</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php foreach ($funcionarios as $f): ?>
           <tr>
-            <th>Nome</th>
-            <th>Data ingresso</th>
-            <th>Salário</th>
-            <th>Cargo</th>
-            <th>Nome fantasia</th>
-            <th>Editar</th>
-          </tr>
-        </thead>
-        <tbody>
-          <?php foreach ($funcionarios as $f): ?>
-            <tr>
-              <td><?= htmlspecialchars($f['nome']) ?></td>
-              <td><?= htmlspecialchars($f['data_ingresso']) ?></td>
-              <td>R$ <?= number_format($f['salario'], 2, ',', '.') ?></td>
-              <td><?= htmlspecialchars($f['cargo_nome']) ?></td>
-              <td><?= htmlspecialchars($f['nome_fantasia']) ?></td>
-              <td><span class="material-icons icon">edit</span></td>
-            </tr>
-          <?php endforeach; ?>
-        </tbody>
-      </table>
-      <button class="btn-add" onclick="window.location.href='IncluirFuncionario.php'">Adicionar funcionário</button>
-    </div>
+            <td><?= htmlspecialchars($f['nome']) ?></td>
+            <td><?= htmlspecialchars($f['data_ingresso']) ?></td>
+            <td>R$ <?= number_format($f['salario'], 2, ',', '.') ?></td>
+            <td><?= htmlspecialchars($f['cargo_nome']) ?></td>
+            <td><?= htmlspecialchars($f['nome_fantasia']) ?></td>
+            <td>
+              <span class="material-icons icon" 
+                    style="color: #1976d2;" 
+                    title="Editar"
+                    onclick="window.location.href='EditarFuncionario.php?id=<?= $f['id_funcionario'] ?>'">
+                edit
+              </span>
 
-    <div class="voltar" onclick="window.history.back()">Voltar</div>
+              <span class="material-icons icon" 
+                    style="color: #d32f2f;" 
+                    title="Excluir"
+                    onclick="if(confirm('Quer mesmo excluir esse funcionário?')) { window.location.href='ExcluirFuncionario.php?id=<?= $f['id_funcionario'] ?>'; }">
+                delete
+              </span>
+            </td>
+          </tr>
+        <?php endforeach; ?>
+      </tbody>
+    </table>
+    <button class="btn-add" onclick="window.location.href='IncluirFuncionario.php'">Adicionar funcionário</button>
   </div>
+
+  <div class="voltar" onclick="window.history.back()">Voltar</div>
+</div>
 
 </body>
 </html>
